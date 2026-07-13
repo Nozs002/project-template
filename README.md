@@ -55,6 +55,21 @@ Trước khi làm chi tiết, hãy vào thư mục `docs/` để định nghĩa 
   - `database.md`: Sơ đồ và cấu trúc Cơ sở dữ liệu (ERD).
   - `api.md`: Tiêu chuẩn và danh sách các giao thức mạng cấp độ hệ thống.
 
+- **Thư mục `docs/analysis/` (Phân tích chi tiết):**
+  - `business-rules.md`: Khai báo các quy tắc kinh doanh (Business Rules) phải tuân thủ nghiêm ngặt.
+  - `use-cases.md`: Liệt kê các kịch bản sử dụng (Use Cases) của hệ thống.
+  - `user-flows.md`: Liệt kê các luồng di chuyển tổng quan của người dùng.
+  - `srs.md`: Đặc tả yêu cầu phần mềm (Software Requirements Specification) chi tiết hơn.
+
+- **Thư mục `docs/ui/` và `docs/changelog/`:**
+  - `ui/ui-guidelines.md`: Quy định về giao diện, mã màu, font chữ, components, và link tới bản mock-up (Figma).
+  - `changelog/changes.md`: Nơi ghi chép lịch sử thay đổi phiên bản (Release Notes) mỗi lần update dự án.
+
+**Lưu ý các thư mục hỗ trợ code (Đừng để trống):**
+- **`mock-data/`**: Chứa các file JSON chứa dữ liệu giả (fake data). Rất quan trọng để frontend hoặc AI có thể render giao diện thử nghiệm khi chưa có Database thật. Hãy điền data mẫu tương ứng với API của bạn.
+- **`tests/`**: Nơi chứa các file kịch bản kiểm thử (Unit tests, E2E tests).
+- **`graph/`**: Bộ công cụ tự động sinh ra sơ đồ mạng lưới quan hệ giữa các tài liệu.
+
 ### Bước 3: Phân tích & Thiết kế Module (Cấp độ Tính năng)
 Khi chuẩn bị lập trình một tính năng cụ thể (ví dụ: Thanh toán, Đăng nhập), bạn sẽ làm việc tại thư mục `modules/`:
 1. Copy thư mục `modules/sample-module` và đổi tên thành tên tính năng của bạn (VD: `modules/payment`).
