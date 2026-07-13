@@ -35,10 +35,10 @@ Dưới đây là luồng hoạt động từng bước cho mọi dự án:
 3. **Tạo nhánh (Branch):** Từ nhánh `main` (chứa tài liệu), rẽ nhánh ra công nghệ bạn muốn dùng (ví dụ: `git checkout -b base-react` hoặc `base-nestjs`).
 
 ### Bước 2: Đặc tả Yêu cầu Tổng quan (Cấp độ Project)
-Trước khi làm chi tiết, hãy vào thư mục `docs/` để định nghĩa bài toán:
-- Cập nhật mục tiêu kinh doanh tại: `docs/requirements/brd.md`
-- Cập nhật yêu cầu sản phẩm tổng quan tại: `docs/requirements/prd.md`
-- Đảm bảo các quy ước về đặt tên (metadata, ID quy tắc) tuân thủ đúng định nghĩa trong file `docs/project/metadata-schema.md`.
+Trước khi làm chi tiết, hãy vào thư mục `docs/` để định nghĩa toàn cảnh bài toán của bạn. Các tài liệu ở đây mang tính chất toàn cục:
+- **Yêu cầu (Requirements):** Khai báo mục tiêu dự án tại `docs/requirements/brd.md` và các tính năng chính tại `prd.md`.
+- **Kiến trúc (Architecture):** Thiết kế cấu trúc hệ thống tổng thể (`architecture.md`), sơ đồ cơ sở dữ liệu (`database.md`), và giao thức mạng (`api.md`) trong folder `docs/architecture/`.
+- **Quản lý dự án (Project):** Định nghĩa thuật ngữ chung (`glossary.md`), quyết định công nghệ (`tech-stack.md`), và đặc biệt là quản lý luật định danh/Metadata tại `docs/project/metadata-schema.md`.
 
 ### Bước 3: Phân tích & Thiết kế Module (Cấp độ Tính năng)
 Khi chuẩn bị lập trình một tính năng cụ thể (ví dụ: Thanh toán, Đăng nhập), bạn sẽ làm việc tại thư mục `modules/`:
@@ -48,7 +48,7 @@ Khi chuẩn bị lập trình một tính năng cụ thể (ví dụ: Thanh toá
    - `requirements.md`: Các yêu cầu chức năng (Functions) cụ thể phải có.
    - `flow.md`: Vẽ biểu đồ luồng hoạt động (bằng Mermaid JS).
    - `api.md`: Thiết kế luồng dữ liệu (API Request/Response).
-3. **Lưu ý:** Mọi file tài liệu bạn viết phải tuân thủ chuẩn Markdown. Nếu sai định dạng (ví dụ: khoảng trắng sai thẻ Heading), hệ thống `Markdownlint` sẽ báo lỗi ngay khi bạn định lưu file. Ngoài ra, cách thức viết tài liệu cần tuân theo các luật nội bộ nằm ở thư mục `.agents/`.
+3. **Luật định dạng:** Mọi file tài liệu phải tuân thủ chuẩn Markdown (sẽ bị `Markdownlint` báo lỗi nếu format sai). Đặc biệt, nội dung và cấu trúc tài liệu **BẮT BUỘC** phải tuân thủ các luật nội bộ được định nghĩa trong file `docs/project/metadata-schema.md` cùng với các quy tắc của AI tại `.agents/`.
 
 ### Bước 4: Triển khai Lập trình (Coding Phase)
 Chỉ sau khi bước 3 hoàn tất (Tài liệu module đã chốt và commit xong):
