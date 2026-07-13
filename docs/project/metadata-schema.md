@@ -26,7 +26,7 @@ _Example: `REQ-AUTH-001`, `MOD-AUTH`, `API-AUTH-LOGIN`, `DB-USERS`_
 
 | Category      | Prefix   | Example            | Description                        |
 | ------------- | -------- | ------------------ | ---------------------------------- |
-| Project       | **PROJ** | `PROJ-MYPORTFOLIO` | Top-level project identifier       |
+| Project       | **PROJ** | `PROJ-TEMPLATE` | Top-level project identifier       |
 | Module        | **MOD**  | `MOD-AUTH`         | System module or boundary          |
 | Requirement   | **REQ**  | `REQ-AUTH-001`     | System or business requirement     |
 | Business Rule | **BR**   | `BR-AUTH-001`      | Specific business rule             |

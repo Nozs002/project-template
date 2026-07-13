@@ -7,37 +7,37 @@ let searchQuery = '';
 
 // Premium Colors for architecture entity types (Schema v1.0)
 const colorMap = {
-  project: '#3b82f6',         // Blue
-  document: '#10b981',        // Emerald
-  module: '#8b5cf6',          // Violet/Purple
-  requirement: '#f59e0b',     // Amber
-  business_rule: '#ef4444',    // Red
-  use_case: '#6366f1',        // Indigo
-  user_flow: '#14b8a6',       // Teal
-  api: '#ec4899',             // Rose/Pink
-  database: '#06b6d4',        // Cyan
-  table: '#0891b2',           // Darker Cyan
-  architecture: '#a855f7',    // Purple/Magenta
-  ui: '#f43f5e',              // Rose Red
-  component: '#fb7185',       // Light Rose
-  source: '#a3a3a3',          // Neutral Gray
-  test: '#22c55e'             // Green
+  project: '#3b82f6', // Blue
+  document: '#10b981', // Emerald
+  module: '#8b5cf6', // Violet/Purple
+  requirement: '#f59e0b', // Amber
+  business_rule: '#ef4444', // Red
+  use_case: '#6366f1', // Indigo
+  user_flow: '#14b8a6', // Teal
+  api: '#ec4899', // Rose/Pink
+  database: '#06b6d4', // Cyan
+  table: '#0891b2', // Darker Cyan
+  architecture: '#a855f7', // Purple/Magenta
+  ui: '#f43f5e', // Rose Red
+  component: '#fb7185', // Light Rose
+  source: '#a3a3a3', // Neutral Gray
+  test: '#22c55e', // Green
 };
 
 // Edge styling specs by type
 const edgeColorMap = {
-  contains: 'rgba(59, 130, 246, 0.25)',     // Blue (Folder tree)
-  links: 'rgba(16, 185, 129, 0.25)',        // Green (Wiki / Markdown link)
-  references: 'rgba(245, 158, 11, 0.25)',   // Yellow (Comment mentions)
-  depends_on: 'rgba(239, 68, 68, 0.35)',    // Red (Dependencies)
-  implements: 'rgba(236, 72, 153, 0.35)',   // Rose (Code implements requirement)
-  belongs_to: 'rgba(99, 102, 241, 0.25)',   // Indigo (Feature belongs to domain)
-  uses: 'rgba(6, 182, 212, 0.25)',          // Cyan (Function dependencies / db / api)
-  tested_by: 'rgba(20, 184, 166, 0.25)',    // Teal (Test coverage)
-  calls: 'rgba(249, 115, 22, 0.25)',        // Orange (API to API)
-  extends: 'rgba(139, 92, 246, 0.25)',      // Violet (Class inheritance structure)
-  inherits: 'rgba(168, 85, 247, 0.25)',      // Purple
-  related_to: 'rgba(156, 163, 175, 0.25)'    // Gray
+  contains: 'rgba(59, 130, 246, 0.25)', // Blue (Folder tree)
+  links: 'rgba(16, 185, 129, 0.25)', // Green (Wiki / Markdown link)
+  references: 'rgba(245, 158, 11, 0.25)', // Yellow (Comment mentions)
+  depends_on: 'rgba(239, 68, 68, 0.35)', // Red (Dependencies)
+  implements: 'rgba(236, 72, 153, 0.35)', // Rose (Code implements requirement)
+  belongs_to: 'rgba(99, 102, 241, 0.25)', // Indigo (Feature belongs to domain)
+  uses: 'rgba(6, 182, 212, 0.25)', // Cyan (Function dependencies / db / api)
+  tested_by: 'rgba(20, 184, 166, 0.25)', // Teal (Test coverage)
+  calls: 'rgba(249, 115, 22, 0.25)', // Orange (API to API)
+  extends: 'rgba(139, 92, 246, 0.25)', // Violet (Class inheritance structure)
+  inherits: 'rgba(168, 85, 247, 0.25)', // Purple
+  related_to: 'rgba(156, 163, 175, 0.25)', // Gray
 };
 
 // FontAwesome icons for each type
@@ -56,7 +56,7 @@ const iconMap = {
   ui: 'fa-window-maximize',
   component: 'fa-puzzle-piece',
   source: 'fa-file-code',
-  test: 'fa-flask'
+  test: 'fa-flask',
 };
 
 // Layout configuration
@@ -72,7 +72,7 @@ const layoutOptions = {
   numIter: 1000,
   initialTemp: 1000,
   coolingFactor: 0.99,
-  minTemp: 1.0
+  minTemp: 1.0,
 };
 
 // Initialization
@@ -99,7 +99,7 @@ function setupEventListeners() {
 
   // Category checkboxes
   const filterCheckboxes = document.querySelectorAll('.filter-item input');
-  filterCheckboxes.forEach(cb => {
+  filterCheckboxes.forEach((cb) => {
     if (cb.checked) {
       activeFilters.add(cb.value);
     }
@@ -115,7 +115,9 @@ function setupEventListeners() {
   });
 
   // Sidebar close
-  document.getElementById('close-sidebar-btn').addEventListener('click', closeSidebar);
+  document
+    .getElementById('close-sidebar-btn')
+    .addEventListener('click', closeSidebar);
 
   // Layout Controls
   document.getElementById('reset-zoom-btn').addEventListener('click', () => {
@@ -123,9 +125,9 @@ function setupEventListeners() {
       cy.animate({
         fit: {
           eles: cy.elements().not('.filtered-out'),
-          padding: 50
+          padding: 50,
         },
-        duration: 600
+        duration: 600,
       });
     }
   });
@@ -134,7 +136,7 @@ function setupEventListeners() {
     if (cy) {
       const layout = cy.layout({
         ...layoutOptions,
-        eles: cy.elements().not('.filtered-out')
+        eles: cy.elements().not('.filtered-out'),
       });
       layout.run();
     }
@@ -145,10 +147,13 @@ function setupEventListeners() {
   nodeSizeSlider.addEventListener('input', (e) => {
     const val = e.target.value;
     if (cy) {
-      cy.style().selector('node').style({
-        'width': val + 'px',
-        'height': val + 'px'
-      }).update();
+      cy.style()
+        .selector('node')
+        .style({
+          width: val + 'px',
+          height: val + 'px',
+        })
+        .update();
     }
   });
 
@@ -157,9 +162,12 @@ function setupEventListeners() {
   linkThicknessSlider.addEventListener('input', (e) => {
     const val = e.target.value;
     if (cy) {
-      cy.style().selector('edge').style({
-        'width': val
-      }).update();
+      cy.style()
+        .selector('edge')
+        .style({
+          width: val,
+        })
+        .update();
     }
   });
 
@@ -168,9 +176,12 @@ function setupEventListeners() {
   textSizeSlider.addEventListener('input', (e) => {
     const val = e.target.value;
     if (cy) {
-      cy.style().selector('node').style({
-        'font-size': val + 'px'
-      }).update();
+      cy.style()
+        .selector('node')
+        .style({
+          'font-size': val + 'px',
+        })
+        .update();
     }
   });
 
@@ -179,19 +190,22 @@ function setupEventListeners() {
   arrowsToggle.addEventListener('change', (e) => {
     const show = e.target.checked;
     if (cy) {
-      cy.style().selector('edge').style({
-        'target-arrow-shape': show ? 'triangle' : 'none'
-      }).update();
+      cy.style()
+        .selector('edge')
+        .style({
+          'target-arrow-shape': show ? 'triangle' : 'none',
+        })
+        .update();
     }
   });
 
   // Collapsible settings group headers
   const headers = document.querySelectorAll('.settings-group-header');
-  headers.forEach(h => {
+  headers.forEach((h) => {
     h.addEventListener('click', () => {
       const content = h.nextElementSibling;
       const icon = h.querySelector('.toggle-icon');
-      
+
       content.classList.toggle('collapsed');
       h.classList.toggle('active');
 
@@ -204,8 +218,12 @@ function setupEventListeners() {
   });
 
   // Connection Authoring listeners
-  document.getElementById('add-conn-btn').addEventListener('click', addConnection);
-  document.getElementById('export-json-btn').addEventListener('click', exportEdgesJSON);
+  document
+    .getElementById('add-conn-btn')
+    .addEventListener('click', addConnection);
+  document
+    .getElementById('export-json-btn')
+    .addEventListener('click', exportEdgesJSON);
 }
 
 // Load Nodes and Edges
@@ -220,7 +238,7 @@ async function fetchGraphData() {
     buildGraph();
     updateStats();
     renderFileExplorer();
-    
+
     // Fade loading overlay
     document.getElementById('loading-overlay').style.opacity = '0';
     setTimeout(() => {
@@ -258,19 +276,35 @@ function getCytoscapeElements() {
   const elements = [];
 
   // Map nodes
-  allNodes.forEach(node => {
+  allNodes.forEach((node) => {
     let mappedType = node.type;
 
     const validTypes = [
-      'project', 'document', 'module', 'requirement', 'business_rule',
-      'use_case', 'user_flow', 'api', 'database', 'table',
-      'architecture', 'ui', 'component', 'source', 'test'
+      'project',
+      'document',
+      'module',
+      'requirement',
+      'business_rule',
+      'use_case',
+      'user_flow',
+      'api',
+      'database',
+      'table',
+      'architecture',
+      'ui',
+      'component',
+      'source',
+      'test',
     ];
     if (!validTypes.includes(mappedType)) {
       // Direct path-based mapping fallback for initial bootstrap
       if (node.id.endsWith('.md') || node.id.startsWith('docs/')) {
         mappedType = 'document';
-      } else if (node.id.startsWith('modules/') || node.id.startsWith('mock-data/') || node.type === 'folder') {
+      } else if (
+        node.id.startsWith('modules/') ||
+        node.id.startsWith('mock-data/') ||
+        node.type === 'folder'
+      ) {
         mappedType = 'module';
       } else {
         mappedType = 'document'; // Fallback
@@ -286,8 +320,8 @@ function getCytoscapeElements() {
         module: node.module || '',
         path: node.path || '',
         description: node.description || '',
-        metadata: node.metadata || { filePath: node.path || node.id }
-      }
+        metadata: node.metadata || { filePath: node.path || node.id },
+      },
     });
   });
 
@@ -301,8 +335,8 @@ function getCytoscapeElements() {
         source: edge.source,
         target: edge.target,
         type: relationType, // Cytoscape uses type key for selector binding
-        description: edge.description || ''
-      }
+        description: edge.description || '',
+      },
     });
   });
 
@@ -324,27 +358,28 @@ function buildGraph() {
       {
         selector: 'node',
         style: {
-          'label': 'data(label)',
-          'color': '#a3a3a3',
+          label: 'data(label)',
+          color: '#a3a3a3',
           'font-family': 'Outfit, sans-serif',
           'font-size': '10px',
           'text-valign': 'bottom',
           'text-margin-y': 6,
-          'shape': 'ellipse',
+          shape: 'ellipse',
           'background-color': '#525252',
           'border-width': '0px',
           'shadow-blur': 0,
           'shadow-opacity': 0.65,
           'shadow-offset-x': 0,
           'shadow-offset-y': 0,
-          'transition-property': 'opacity, background-color, border-color, width, height, border-width, shadow-blur, color',
-          'transition-duration': '0.2s'
-        }
+          'transition-property':
+            'opacity, background-color, border-color, width, height, border-width, shadow-blur, color',
+          'transition-duration': '0.2s',
+        },
       },
       {
         selector: 'edge',
         style: {
-          'width': 1,
+          width: 1,
           'line-color': 'rgba(255, 255, 255, 0.08)',
           'target-arrow-color': 'rgba(255, 255, 255, 0.08)',
           'target-arrow-shape': 'triangle',
@@ -352,9 +387,10 @@ function buildGraph() {
           'control-point-step-size': 30,
           'arrow-scale': 0.75,
           'overlay-opacity': 0,
-          'transition-property': 'opacity, line-color, width, target-arrow-color',
-          'transition-duration': '0.2s'
-        }
+          'transition-property':
+            'opacity, line-color, width, target-arrow-color',
+          'transition-duration': '0.2s',
+        },
       },
       // Glowing colors & custom sizes per node type
       {
@@ -363,13 +399,13 @@ function buildGraph() {
           'background-color': colorMap.project,
           'shadow-color': colorMap.project,
           'shadow-blur': 25,
-          'width': '28px',
-          'height': '28px',
+          width: '28px',
+          height: '28px',
           'font-size': '12px',
           'font-weight': 'bold',
           'border-width': '2.5px',
-          'border-color': 'rgba(255, 255, 255, 0.25)'
-        }
+          'border-color': 'rgba(255, 255, 255, 0.25)',
+        },
       },
       {
         selector: 'node[type="document"]',
@@ -377,9 +413,9 @@ function buildGraph() {
           'background-color': colorMap.document,
           'shadow-color': colorMap.document,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="module"]',
@@ -387,10 +423,10 @@ function buildGraph() {
           'background-color': colorMap.module,
           'shadow-color': colorMap.module,
           'shadow-blur': 16,
-          'width': '20px',
-          'height': '20px',
-          'font-weight': '600'
-        }
+          width: '20px',
+          height: '20px',
+          'font-weight': '600',
+        },
       },
       {
         selector: 'node[type="requirement"]',
@@ -398,9 +434,9 @@ function buildGraph() {
           'background-color': colorMap.requirement,
           'shadow-color': colorMap.requirement,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="business_rule"]',
@@ -408,9 +444,9 @@ function buildGraph() {
           'background-color': colorMap.business_rule,
           'shadow-color': colorMap.business_rule,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="use_case"]',
@@ -418,9 +454,9 @@ function buildGraph() {
           'background-color': colorMap.use_case,
           'shadow-color': colorMap.use_case,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="user_flow"]',
@@ -428,9 +464,9 @@ function buildGraph() {
           'background-color': colorMap.user_flow,
           'shadow-color': colorMap.user_flow,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="api"]',
@@ -438,9 +474,9 @@ function buildGraph() {
           'background-color': colorMap.api,
           'shadow-color': colorMap.api,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="database"]',
@@ -448,9 +484,9 @@ function buildGraph() {
           'background-color': colorMap.database,
           'shadow-color': colorMap.database,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="table"]',
@@ -458,9 +494,9 @@ function buildGraph() {
           'background-color': colorMap.table,
           'shadow-color': colorMap.table,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="architecture"]',
@@ -468,9 +504,9 @@ function buildGraph() {
           'background-color': colorMap.architecture,
           'shadow-color': colorMap.architecture,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="ui"]',
@@ -478,9 +514,9 @@ function buildGraph() {
           'background-color': colorMap.ui,
           'shadow-color': colorMap.ui,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="component"]',
@@ -488,9 +524,9 @@ function buildGraph() {
           'background-color': colorMap.component,
           'shadow-color': colorMap.component,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="source"]',
@@ -498,9 +534,9 @@ function buildGraph() {
           'background-color': colorMap.source,
           'shadow-color': colorMap.source,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       {
         selector: 'node[type="test"]',
@@ -508,63 +544,133 @@ function buildGraph() {
           'background-color': colorMap.test,
           'shadow-color': colorMap.test,
           'shadow-blur': 12,
-          'width': '14px',
-          'height': '14px'
-        }
+          width: '14px',
+          height: '14px',
+        },
       },
       // Styling per edge type - subtle color indicators
-      { selector: 'edge[type="contains"]', style: { 'line-color': edgeColorMap.contains, 'target-arrow-color': edgeColorMap.contains } },
-      { selector: 'edge[type="links"]', style: { 'line-color': edgeColorMap.links, 'target-arrow-color': edgeColorMap.links, 'line-style': 'dotted' } },
-      { selector: 'edge[type="references"]', style: { 'line-color': edgeColorMap.references, 'target-arrow-color': edgeColorMap.references, 'line-style': 'dashed' } },
-      { selector: 'edge[type="depends_on"]', style: { 'line-color': edgeColorMap.depends_on, 'target-arrow-color': edgeColorMap.depends_on, 'line-style': 'dashed' } },
-      { selector: 'edge[type="implements"]', style: { 'line-color': edgeColorMap.implements, 'target-arrow-color': edgeColorMap.implements } },
-      { selector: 'edge[type="belongs_to"]', style: { 'line-color': edgeColorMap.belongs_to, 'target-arrow-color': edgeColorMap.belongs_to } },
-      { selector: 'edge[type="uses"]', style: { 'line-color': edgeColorMap.uses, 'target-arrow-color': edgeColorMap.uses } },
-      { selector: 'edge[type="tested_by"]', style: { 'line-color': edgeColorMap.tested_by, 'target-arrow-color': edgeColorMap.tested_by, 'line-style': 'dashed' } },
-      { selector: 'edge[type="calls"]', style: { 'line-color': edgeColorMap.calls, 'target-arrow-color': edgeColorMap.calls } },
-      { selector: 'edge[type="extends"]', style: { 'line-color': edgeColorMap.extends, 'target-arrow-color': edgeColorMap.extends } },
-      { selector: 'edge[type="inherits"]', style: { 'line-color': edgeColorMap.inherits, 'target-arrow-color': edgeColorMap.inherits } },
-      
+      {
+        selector: 'edge[type="contains"]',
+        style: {
+          'line-color': edgeColorMap.contains,
+          'target-arrow-color': edgeColorMap.contains,
+        },
+      },
+      {
+        selector: 'edge[type="links"]',
+        style: {
+          'line-color': edgeColorMap.links,
+          'target-arrow-color': edgeColorMap.links,
+          'line-style': 'dotted',
+        },
+      },
+      {
+        selector: 'edge[type="references"]',
+        style: {
+          'line-color': edgeColorMap.references,
+          'target-arrow-color': edgeColorMap.references,
+          'line-style': 'dashed',
+        },
+      },
+      {
+        selector: 'edge[type="depends_on"]',
+        style: {
+          'line-color': edgeColorMap.depends_on,
+          'target-arrow-color': edgeColorMap.depends_on,
+          'line-style': 'dashed',
+        },
+      },
+      {
+        selector: 'edge[type="implements"]',
+        style: {
+          'line-color': edgeColorMap.implements,
+          'target-arrow-color': edgeColorMap.implements,
+        },
+      },
+      {
+        selector: 'edge[type="belongs_to"]',
+        style: {
+          'line-color': edgeColorMap.belongs_to,
+          'target-arrow-color': edgeColorMap.belongs_to,
+        },
+      },
+      {
+        selector: 'edge[type="uses"]',
+        style: {
+          'line-color': edgeColorMap.uses,
+          'target-arrow-color': edgeColorMap.uses,
+        },
+      },
+      {
+        selector: 'edge[type="tested_by"]',
+        style: {
+          'line-color': edgeColorMap.tested_by,
+          'target-arrow-color': edgeColorMap.tested_by,
+          'line-style': 'dashed',
+        },
+      },
+      {
+        selector: 'edge[type="calls"]',
+        style: {
+          'line-color': edgeColorMap.calls,
+          'target-arrow-color': edgeColorMap.calls,
+        },
+      },
+      {
+        selector: 'edge[type="extends"]',
+        style: {
+          'line-color': edgeColorMap.extends,
+          'target-arrow-color': edgeColorMap.extends,
+        },
+      },
+      {
+        selector: 'edge[type="inherits"]',
+        style: {
+          'line-color': edgeColorMap.inherits,
+          'target-arrow-color': edgeColorMap.inherits,
+        },
+      },
+
       // Interactive styling classes
       {
         selector: '.filtered-out',
         style: {
-          'display': 'none'
-        }
+          display: 'none',
+        },
       },
       {
         selector: '.dimmed',
         style: {
-          'opacity': 0.15,
-          'events': 'no'
-        }
+          opacity: 0.15,
+          events: 'no',
+        },
       },
       {
         selector: '.highlighted',
         style: {
-          'opacity': 1,
-          'color': '#f3f4f6',
-          'font-weight': '600'
-        }
+          opacity: 1,
+          color: '#f3f4f6',
+          'font-weight': '600',
+        },
       },
       {
         selector: 'node.highlighted',
         style: {
           'border-width': '2px',
           'border-color': '#fff',
-          'shadow-blur': 30
-        }
+          'shadow-blur': 30,
+        },
       },
       {
         selector: 'edge.highlighted',
         style: {
-          'width': 2.5,
+          width: 2.5,
           'line-color': '#fff',
-          'target-arrow-color': '#fff'
-        }
-      }
+          'target-arrow-color': '#fff',
+        },
+      },
     ],
-    layout: layoutOptions
+    layout: layoutOptions,
   });
 
   // Canvas Interactions
@@ -591,17 +697,18 @@ function applyFilters() {
 
   cy.batch(() => {
     // Process nodes
-    cy.nodes().forEach(node => {
+    cy.nodes().forEach((node) => {
       const type = node.data('type');
       const label = (node.data('label') || '').toLowerCase();
       const id = node.id().toLowerCase();
       const description = (node.data('description') || '').toLowerCase();
 
       const typeMatch = activeFilters.has(type);
-      const searchMatch = !searchQuery || 
-                          label.includes(searchQuery) || 
-                          id.includes(searchQuery) || 
-                          description.includes(searchQuery);
+      const searchMatch =
+        !searchQuery ||
+        label.includes(searchQuery) ||
+        id.includes(searchQuery) ||
+        description.includes(searchQuery);
 
       if (typeMatch && searchMatch) {
         node.removeClass('filtered-out');
@@ -612,7 +719,7 @@ function applyFilters() {
     });
 
     // Process edges after filtering nodes to prevent dangling edges
-    cy.edges().forEach(edge => {
+    cy.edges().forEach((edge) => {
       const source = cy.getElementById(edge.data('source'));
       const target = cy.getElementById(edge.data('target'));
 
@@ -629,7 +736,10 @@ function applyFilters() {
 function highlightNeighborhood(node) {
   cy.batch(() => {
     // Dim everything first
-    cy.elements().not('.filtered-out').removeClass('highlighted').addClass('dimmed');
+    cy.elements()
+      .not('.filtered-out')
+      .removeClass('highlighted')
+      .addClass('dimmed');
 
     // Highlight selected node
     node.removeClass('dimmed').addClass('highlighted');
@@ -638,7 +748,11 @@ function highlightNeighborhood(node) {
     const connectedEdges = node.connectedEdges().not('.filtered-out');
     connectedEdges.removeClass('dimmed').addClass('highlighted');
 
-    connectedEdges.connectedNodes().not('.filtered-out').removeClass('dimmed').addClass('highlighted');
+    connectedEdges
+      .connectedNodes()
+      .not('.filtered-out')
+      .removeClass('dimmed')
+      .addClass('highlighted');
   });
 }
 
@@ -650,7 +764,9 @@ function clearHighlights() {
   });
 
   // Clear explorer highlighting
-  document.querySelectorAll('.tree-node').forEach(el => el.classList.remove('active'));
+  document
+    .querySelectorAll('.tree-node')
+    .forEach((el) => el.classList.remove('active'));
 }
 
 // Focus and pan-zoom to a specific node
@@ -661,12 +777,12 @@ function selectAndFocusNode(nodeId) {
   if (node.length > 0 && !node.hasClass('filtered-out')) {
     cy.nodes().unselect();
     node.select();
-    
+
     // Zoom and pan
     cy.animate({
       center: { eles: node },
       zoom: 1.1,
-      duration: 600
+      duration: 600,
     });
 
     highlightNeighborhood(node);
@@ -683,7 +799,7 @@ function renderFileExplorer() {
   // Build tree object
   const tree = {};
 
-  allNodes.forEach(node => {
+  allNodes.forEach((node) => {
     let parts = [];
     if (node.path) {
       parts = node.path.split('/');
@@ -697,14 +813,14 @@ function renderFileExplorer() {
     let current = tree;
     for (let i = 0; i < parts.length; i++) {
       const part = parts[i];
-      const isFile = (i === parts.length - 1);
+      const isFile = i === parts.length - 1;
 
       if (!current[part]) {
         current[part] = {
           name: part,
           isFile: isFile,
           nodeId: isFile ? node.id : null,
-          children: {}
+          children: {},
         };
       }
       current = current[part].children;
@@ -719,8 +835,8 @@ function renderFileExplorer() {
       const item = document.createElement('div');
       item.className = 'tree-node';
       item.setAttribute('data-id', nodeData.nodeId);
-      
-      const origNode = allNodes.find(n => n.id === nodeData.nodeId);
+
+      const origNode = allNodes.find((n) => n.id === nodeData.nodeId);
       const type = origNode ? origNode.type : 'document';
       const iconClass = iconMap[type] || 'fa-file-lines';
       const color = colorMap[type] || '#a3a3a3';
@@ -771,7 +887,7 @@ function renderFileExplorer() {
         return a.localeCompare(b);
       });
 
-      childKeys.forEach(k => {
+      childKeys.forEach((k) => {
         const childEl = createTreeNodeElement(nodeData.children[k], depth + 1);
         childrenWrapper.appendChild(childEl);
       });
@@ -793,7 +909,7 @@ function renderFileExplorer() {
     return a.localeCompare(b);
   });
 
-  topKeys.forEach(k => {
+  topKeys.forEach((k) => {
     const el = createTreeNodeElement(tree[k], 0);
     explorer.appendChild(el);
   });
@@ -809,7 +925,9 @@ function showDetails(node) {
   const color = colorMap[type] || '#6b7280';
 
   // Highlight matching tree node in left explorer
-  document.querySelectorAll('.tree-node').forEach(el => el.classList.remove('active'));
+  document
+    .querySelectorAll('.tree-node')
+    .forEach((el) => el.classList.remove('active'));
   const matchedTreeEl = document.querySelector(`.tree-node[data-id="${id}"]`);
   if (matchedTreeEl) {
     matchedTreeEl.classList.add('active');
@@ -839,10 +957,17 @@ function showDetails(node) {
   const metaContainer = document.getElementById('detail-meta-container');
   metaContainer.innerHTML = '';
 
-  const metaKeys = Object.keys(metadata).filter(k => k !== 'filePath' && k !== 'id' && k !== 'type' && k !== 'title' && k !== 'description');
+  const metaKeys = Object.keys(metadata).filter(
+    (k) =>
+      k !== 'filePath' &&
+      k !== 'id' &&
+      k !== 'type' &&
+      k !== 'title' &&
+      k !== 'description',
+  );
   if (metaKeys.length > 0) {
     metaSection.style.display = 'block';
-    metaKeys.forEach(key => {
+    metaKeys.forEach((key) => {
       const val = metadata[key];
       const row = document.createElement('div');
       row.style.display = 'flex';
@@ -850,7 +975,7 @@ function showDetails(node) {
       row.style.fontSize = '11px';
       row.style.padding = '6px 0';
       row.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
-      
+
       const labelSpan = document.createElement('span');
       labelSpan.style.color = '#9ca3af';
       labelSpan.style.fontWeight = '500';
@@ -862,7 +987,7 @@ function showDetails(node) {
       valCode.style.padding = '2px 6px';
       valCode.style.borderRadius = '4px';
       valCode.style.color = '#f3f4f6';
-      
+
       if (typeof val === 'object') {
         valCode.textContent = JSON.stringify(val);
       } else {
@@ -885,11 +1010,13 @@ function showDetails(node) {
   const connectedEdges = node.connectedEdges().not('.filtered-out');
   const relations = [];
 
-  connectedEdges.forEach(edge => {
+  connectedEdges.forEach((edge) => {
     const sourceId = edge.data('source');
     const targetId = edge.data('target');
     const relationType = edge.data('type');
-    const edgeDesc = edge.data('description') ? ` (${edge.data('description')})` : '';
+    const edgeDesc = edge.data('description')
+      ? ` (${edge.data('description')})`
+      : '';
 
     if (sourceId === id) {
       // Outgoing edge
@@ -900,7 +1027,7 @@ function showDetails(node) {
           nodeId: targetId,
           nodeLabel: targetNode.data('label'),
           nodeType: targetNode.data('type'),
-          relation: `${relationType}${edgeDesc} ➔`
+          relation: `${relationType}${edgeDesc} ➔`,
         });
       }
     } else {
@@ -912,7 +1039,7 @@ function showDetails(node) {
           nodeId: sourceId,
           nodeLabel: sourceNode.data('label'),
           nodeType: sourceNode.data('type'),
-          relation: `➔ ${relationType}${edgeDesc}`
+          relation: `➔ ${relationType}${edgeDesc}`,
         });
       }
     }
@@ -920,8 +1047,8 @@ function showDetails(node) {
 
   if (relations.length > 0) {
     document.getElementById('section-connections').style.display = 'block';
-    
-    relations.forEach(rel => {
+
+    relations.forEach((rel) => {
       const connIcon = iconMap[rel.nodeType] || 'fa-circle-nodes';
       const connColor = colorMap[rel.nodeType] || '#6b7280';
 
@@ -930,7 +1057,7 @@ function showDetails(node) {
       connItem.style.display = 'flex';
       connItem.style.justifyContent = 'space-between';
       connItem.style.alignItems = 'center';
-      
+
       connItem.innerHTML = `
         <div class="conn-info-wrapper" style="display: flex; align-items: center; gap: 8px; flex: 1; overflow: hidden; cursor: pointer;">
           <i class="fa-solid ${connIcon} conn-icon" style="color: ${connColor}"></i>
@@ -943,18 +1070,22 @@ function showDetails(node) {
       `;
 
       // Click on info focuses neighbor node
-      connItem.querySelector('.conn-info-wrapper').addEventListener('click', (e) => {
-        e.stopPropagation();
-        selectAndFocusNode(rel.nodeId);
-      });
+      connItem
+        .querySelector('.conn-info-wrapper')
+        .addEventListener('click', (e) => {
+          e.stopPropagation();
+          selectAndFocusNode(rel.nodeId);
+        });
 
       // Click on delete removes connection
-      connItem.querySelector('.delete-edge-btn').addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (confirm(`Are you sure you want to remove this connection?`)) {
-          deleteConnection(rel.edgeId, node);
-        }
-      });
+      connItem
+        .querySelector('.delete-edge-btn')
+        .addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (confirm(`Are you sure you want to remove this connection?`)) {
+            deleteConnection(rel.edgeId, node);
+          }
+        });
 
       connList.appendChild(connItem);
     });
@@ -966,10 +1097,10 @@ function showDetails(node) {
   const targetSelect = document.getElementById('new-conn-target');
   if (targetSelect) {
     targetSelect.innerHTML = '';
-    
+
     // Get all visible nodes excluding the currently selected one
     const allNodesList = cy.nodes().not('.filtered-out').not(node);
-    
+
     // Sort nodes alphabetically by label for easier finding
     const sortedNodes = allNodesList.toArray().sort((a, b) => {
       const labelA = (a.data('label') || '').toLowerCase();
@@ -977,7 +1108,7 @@ function showDetails(node) {
       return labelA.localeCompare(labelB);
     });
 
-    sortedNodes.forEach(n => {
+    sortedNodes.forEach((n) => {
       const option = document.createElement('option');
       option.value = n.id();
       option.textContent = `${n.data('label')} (${n.data('type')})`;
@@ -1004,11 +1135,11 @@ function closeSidebar() {
 // Add interactive connection between nodes visually and to data list
 function addConnection() {
   if (!cy) return;
-  
+
   // Find selected source node
   const sourceNode = cy.nodes(':selected');
   if (sourceNode.length === 0) {
-    alert("Please select a node on the graph first.");
+    alert('Please select a node on the graph first.');
     return;
   }
 
@@ -1017,28 +1148,31 @@ function addConnection() {
   const relationType = document.getElementById('new-conn-type').value;
 
   if (!targetId) {
-    alert("Please select a target node.");
+    alert('Please select a target node.');
     return;
   }
   if (sourceId === targetId) {
-    alert("A node cannot connect to itself.");
+    alert('A node cannot connect to itself.');
     return;
   }
 
   // Avoid duplicate connections of the same type between the same nodes
-  const edgeExists = cy.edges().some(edge => 
-    edge.data('source') === sourceId && 
-    edge.data('target') === targetId && 
-    edge.data('type') === relationType
-  );
+  const edgeExists = cy
+    .edges()
+    .some(
+      (edge) =>
+        edge.data('source') === sourceId &&
+        edge.data('target') === targetId &&
+        edge.data('type') === relationType,
+    );
 
   if (edgeExists) {
-    alert("This relationship already exists!");
+    alert('This relationship already exists!');
     return;
   }
 
   const edgeId = `edge_new_${Date.now()}`;
-  
+
   // Add visually to canvas
   cy.add({
     group: 'edges',
@@ -1047,8 +1181,8 @@ function addConnection() {
       source: sourceId,
       target: targetId,
       type: relationType,
-      description: 'Created interactively via UI'
-    }
+      description: 'Created interactively via UI',
+    },
   });
 
   // Append to the list of edges in memory
@@ -1056,7 +1190,7 @@ function addConnection() {
     source: sourceId,
     target: targetId,
     relation: relationType,
-    description: 'Created interactively via UI'
+    description: 'Created interactively via UI',
   });
 
   // Refresh view and update selection highlight
@@ -1069,17 +1203,19 @@ function exportEdgesJSON() {
   if (allEdges.length === 0) return;
 
   // Standardize output JSON fields
-  const outputEdges = allEdges.map(edge => ({
+  const outputEdges = allEdges.map((edge) => ({
     source: edge.source,
     target: edge.target,
     relation: edge.relation || edge.type || 'references',
-    description: edge.description || ''
+    description: edge.description || '',
   }));
 
-  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(outputEdges, null, 2));
+  const dataStr =
+    'data:text/json;charset=utf-8,' +
+    encodeURIComponent(JSON.stringify(outputEdges, null, 2));
   const downloadAnchor = document.createElement('a');
-  downloadAnchor.setAttribute("href", dataStr);
-  downloadAnchor.setAttribute("download", "edges.json");
+  downloadAnchor.setAttribute('href', dataStr);
+  downloadAnchor.setAttribute('download', 'edges.json');
   document.body.appendChild(downloadAnchor);
   downloadAnchor.click();
   downloadAnchor.remove();
@@ -1088,7 +1224,7 @@ function exportEdgesJSON() {
 // Delete connection visually and update the memory list
 function deleteConnection(edgeId, currentNode) {
   if (!cy) return;
-  
+
   const edge = cy.getElementById(edgeId);
   if (edge.length > 0) {
     const sourceId = edge.data('source');
@@ -1099,9 +1235,16 @@ function deleteConnection(edgeId, currentNode) {
     edge.remove();
 
     // Filter out from memory list
-    allEdges = allEdges.filter(e => 
-      !((e.source === sourceId && e.target === targetId && e.relation === relationType) ||
-        (e.source === sourceId && e.target === targetId && e.type === relationType))
+    allEdges = allEdges.filter(
+      (e) =>
+        !(
+          (e.source === sourceId &&
+            e.target === targetId &&
+            e.relation === relationType) ||
+          (e.source === sourceId &&
+            e.target === targetId &&
+            e.type === relationType)
+        ),
     );
 
     // Refresh highlights & sidebar details
