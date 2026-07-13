@@ -87,3 +87,20 @@ Chỉ sau khi bước 3 hoàn tất (Tài liệu module đã chốt và commit x
 
 ### Bước 5: Commit & Push
 Gõ lệnh `git commit`. Hệ thống Husky + Lint-staged sẽ chặn lại một nhịp để tự động format code bằng Prettier, kiểm tra lỗi chính tả markdown, rồi mới đẩy lên Repository thành công.
+
+---
+
+## 🤖 Hướng dẫn tích hợp AI Agents (AI Integration Guide)
+
+Bộ khung này đi kèm với thư mục `.agents/` chứa các bộ kỹ năng (Skills) và luật (Rules) mặc định. Tùy thuộc vào công cụ AI bạn đang sử dụng, hãy làm theo hướng dẫn dưới đây để AI có thể "hiểu" được các luật này:
+
+### 1. Dành cho các AI tích hợp sẵn trong IDE (Cursor, VSCode Copilot, v.v.)
+Khuyến nghị sử dụng phương pháp **Tạo file trỏ (Pointer)** để đảm bảo AI luôn cập nhật luật mới nhất từ `.agents/` (Single Source of Truth).
+- **Ví dụ với Cursor:** Tạo một file tên là `.cursorrules` ở thư mục gốc của dự án và dán dòng lệnh tiếng Anh sau vào:
+  > *"Always read and strictly follow the global rules defined in `.agents/AGENTS.md` and check `.agents/skills/` for specific task instructions before writing any code."*
+
+### 2. Dành cho các AI dạng Chat Web (ChatGPT, Claude, Gemini)
+Các AI này không có quyền tự động quét file trong máy tính của bạn. Hãy sử dụng phương pháp **Copy thủ công**:
+- Trước khi bắt đầu một đoạn hội thoại hoặc dự án mới, hãy mở file `.agents/AGENTS.md` hoặc các file `SKILL.md` tương ứng.
+- **Copy** nội dung bên trong và **Paste** vào phần *System Prompt* (hoặc *Custom Instructions*) của AI, hoặc dán thẳng vào khung chat đầu tiên.
+- Bằng cách này, bạn có thể chủ động mớm cho AI đúng bộ kỹ năng cần thiết cho task đó, giúp tiết kiệm bộ nhớ (Token) và giúp AI tập trung hơn.
