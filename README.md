@@ -62,7 +62,7 @@ Trước khi làm chi tiết, hãy vào thư mục `docs/` để định nghĩa 
   - `srs.md`: Đặc tả yêu cầu phần mềm (Software Requirements Specification) chi tiết hơn.
 
 - **Thư mục `docs/ui/` và `docs/changelog/`:**
-  - `ui/ui-guidelines.md`: Quy định về giao diện, mã màu, font chữ, components, và link tới bản mock-up (Figma).
+  - `ui/ui-guidelines.md`: Quy định về giao diện, mã màu, font chữ, components. Bạn cũng nên đặt các file HTML/CSS giao diện mẫu (Mockup/Template) vào thư mục `docs/ui/` này để tham khảo.
   - `changelog/changes.md`: Nơi ghi chép lịch sử thay đổi phiên bản (Release Notes) mỗi lần update dự án.
 
 **Lưu ý các thư mục hỗ trợ code (Đừng để trống):**
@@ -83,7 +83,8 @@ Khi chuẩn bị lập trình một tính năng cụ thể (ví dụ: Thanh toá
 ### Bước 4: Triển khai Lập trình (Coding Phase)
 Chỉ sau khi bước 3 hoàn tất (Tài liệu module đã chốt và commit xong):
 - Bạn (hoặc AI Agent) mới được phép bắt tay vào viết Mã nguồn (Source Code).
-- Code có thể đặt tập trung vào thư mục `src/`, hoặc đặt trực tiếp vào trong folder của module đó (VD: `modules/payment/controller.ts` nếu bạn làm theo chuẩn Modular Architecture).
+- **Khi Lập trình Frontend:** Lập trình viên hoặc AI BẮT BUỘC phải tham chiếu đến các file HTML/CSS giao diện mẫu đã được người dùng chỉ định (đặt trong thư mục `docs/ui/`) để đảm bảo code ra chính xác với thiết kế.
+- **Cấu trúc Source Code:** Mã nguồn có thể đặt tập trung vào thư mục `src/`, hoặc đặt trực tiếp vào trong folder của module đó (VD: `modules/payment/controller.ts` nếu bạn làm theo chuẩn Modular Architecture).
 
 ### Bước 5: Commit & Push
 Gõ lệnh `git commit`. Hệ thống Husky + Lint-staged sẽ chặn lại một nhịp để tự động format code bằng Prettier, kiểm tra lỗi chính tả markdown, rồi mới đẩy lên Repository thành công.
