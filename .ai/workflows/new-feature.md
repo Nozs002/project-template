@@ -198,6 +198,7 @@ Implementation Rules
 - Preserve module boundaries.
 - Reuse existing components whenever possible.
 - Avoid duplicate logic.
+- Strictly reference HTML/CSS mockups in `docs/ui/` for frontend features.
 
 AI should not introduce unnecessary complexity.
 
