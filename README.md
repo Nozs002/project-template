@@ -35,10 +35,25 @@ Dưới đây là luồng hoạt động từng bước cho mọi dự án:
 3. **Tạo nhánh (Branch):** Từ nhánh `main` (chứa tài liệu), rẽ nhánh ra công nghệ bạn muốn dùng (ví dụ: `git checkout -b base-react` hoặc `base-nestjs`).
 
 ### Bước 2: Đặc tả Yêu cầu Tổng quan (Cấp độ Project)
-Trước khi làm chi tiết, hãy vào thư mục `docs/` để định nghĩa toàn cảnh bài toán của bạn. Các tài liệu ở đây mang tính chất toàn cục:
-- **Yêu cầu (Requirements):** Khai báo mục tiêu dự án tại `docs/requirements/brd.md` và các tính năng chính tại `prd.md`.
-- **Kiến trúc (Architecture):** Thiết kế cấu trúc hệ thống tổng thể (`architecture.md`), sơ đồ cơ sở dữ liệu (`database.md`), và giao thức mạng (`api.md`) trong folder `docs/architecture/`.
-- **Quản lý dự án (Project):** Định nghĩa thuật ngữ chung (`glossary.md`), quyết định công nghệ (`tech-stack.md`), và đặc biệt là quản lý luật định danh/Metadata tại `docs/project/metadata-schema.md`.
+Trước khi làm chi tiết, hãy vào thư mục `docs/` để định nghĩa toàn cảnh bài toán của bạn. Phải đảm bảo **KHÔNG CÓ FILE NÀO BỊ BỎ TRỐNG** trong các thư mục sau:
+
+- **Thư mục `docs/project/` (Nền tảng dự án):**
+  - `vision.md`: Định nghĩa Tầm nhìn, sứ mệnh và giá trị cốt lõi của toàn bộ dự án.
+  - `tech-stack.md`: Khai báo danh sách các Công nghệ, ngôn ngữ, và thư viện sẽ sử dụng.
+  - `project-structure.md`: Sơ đồ giải thích cấu trúc thư mục mã nguồn thực tế.
+  - `glossary.md`: Từ điển thuật ngữ, giải thích các khái niệm chuyên ngành dùng trong dự án.
+  - `status.md`: Bảng theo dõi tiến độ, version và trạng thái hiện tại của hệ thống.
+  - `metadata-schema.md`: Quy định về mã định danh (ID) và cấu trúc Metadata cho mọi tài liệu.
+
+- **Thư mục `docs/requirements/` (Yêu cầu nghiệp vụ):**
+  - `brd.md`: Tài liệu yêu cầu kinh doanh (Mục tiêu, phạm vi, khách hàng mục tiêu).
+  - `prd.md`: Tài liệu yêu cầu sản phẩm (Tính năng chi tiết, User Story).
+  - `rtm.md`: Ma trận truy vết yêu cầu (Đảm bảo code đáp ứng đúng thiết kế).
+
+- **Thư mục `docs/architecture/` (Kiến trúc hệ thống):**
+  - `architecture.md`: Thiết kế cấu trúc hệ thống tổng thể (Frontend, Backend, Cloud).
+  - `database.md`: Sơ đồ và cấu trúc Cơ sở dữ liệu (ERD).
+  - `api.md`: Tiêu chuẩn và danh sách các giao thức mạng cấp độ hệ thống.
 
 ### Bước 3: Phân tích & Thiết kế Module (Cấp độ Tính năng)
 Khi chuẩn bị lập trình một tính năng cụ thể (ví dụ: Thanh toán, Đăng nhập), bạn sẽ làm việc tại thư mục `modules/`:
