@@ -1,0 +1,34 @@
+{
+  "name": "myportfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "generate-graph": "tsc && node graph/generate-graph.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write .",
+    "lint:md": "markdownlint \"**/*.md\" --ignore node_modules",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "**/*.md": "markdownlint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
+    "markdownlint-cli": "^0.49.0",
+    "prettier": "^3.9.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  }
+}

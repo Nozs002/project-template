@@ -1,0 +1,189 @@
+[
+  {
+    "id": ".agents/skills/normalize-file/SKILL.md",
+    "label": "SKILL",
+    "type": "document",
+    "path": ".agents/skills/normalize-file/SKILL.md",
+    "description": "Kích hoạt khi người dùng yêu cầu \"chuẩn hóa\" hoặc \"normalize\" một file. Workflow này đảm bảo AI luôn đọc các quy tắc chuẩn hóa trước khi thực hiện."
+  },
+  {
+    "id": "DOC-RULES",
+    "label": "business-rules",
+    "type": "business_rule",
+    "path": "docs/analysis/business-rules.md",
+    "description": "Collection of systemic business rules governing content lifecycle, audit, and security."
+  },
+  {
+    "id": "docs/analysis/srs.md",
+    "label": "srs",
+    "type": "document",
+    "path": "docs/analysis/srs.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-USE-CASES",
+    "label": "use-cases",
+    "type": "use_case",
+    "path": "docs/analysis/use-cases.md",
+    "description": "Interactive use cases for portfolio owners and recruiters."
+  },
+  {
+    "id": "DOC-USER-FLOWS",
+    "label": "user-flows",
+    "type": "user_flow",
+    "path": "docs/analysis/user-flows.md",
+    "description": "Sequence diagrams and path flows representing content state transition."
+  },
+  {
+    "id": "DOC-ARCH-API",
+    "label": "api",
+    "type": "api",
+    "path": "docs/architecture/api.md",
+    "description": "REST/GraphQL API specification for front-facing portfolio and administration workspace."
+  },
+  {
+    "id": "DOC-ARCH",
+    "label": "architecture",
+    "type": "architecture",
+    "path": "docs/architecture/architecture.md",
+    "description": "Overall structural and architectural choices for backend modules, API integration, and frontend components."
+  },
+  {
+    "id": "DOC-ARCH-DB",
+    "label": "database",
+    "type": "database",
+    "path": "docs/architecture/database.md",
+    "description": "Relational model, collections, and index configurations for auditing and storing versioned portfolio contents."
+  },
+  {
+    "id": "docs/changelog/changes.md",
+    "label": "changes",
+    "type": "document",
+    "path": "docs/changelog/changes.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-GLOSSARY",
+    "label": "glossary",
+    "type": "document",
+    "path": "docs/project/glossary.md",
+    "description": ""
+  },
+  {
+    "id": "docs/project/metadata-schema.md",
+    "label": "metadata-schema",
+    "type": "document",
+    "path": "docs/project/metadata-schema.md",
+    "description": ""
+  },
+  {
+    "id": "docs/project/project-structure.md",
+    "label": "project-structure",
+    "type": "document",
+    "path": "docs/project/project-structure.md",
+    "description": ""
+  },
+  {
+    "id": "docs/project/status.md",
+    "label": "status",
+    "type": "document",
+    "path": "docs/project/status.md",
+    "description": ""
+  },
+  {
+    "id": "docs/project/tech-stack.md",
+    "label": "tech-stack",
+    "type": "document",
+    "path": "docs/project/tech-stack.md",
+    "description": ""
+  },
+  {
+    "id": "docs/project/vision.md",
+    "label": "vision",
+    "type": "document",
+    "path": "docs/project/vision.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-BRD",
+    "label": "brd",
+    "type": "requirement",
+    "path": "docs/requirements/brd.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-PRD",
+    "label": "prd",
+    "type": "requirement",
+    "path": "docs/requirements/prd.md",
+    "description": "PRD defines the technical scope, features, and workflows for MyPortfolio."
+  },
+  {
+    "id": "DOC-RTM",
+    "label": "rtm",
+    "type": "requirement",
+    "path": "docs/requirements/rtm.md",
+    "description": "Matrix mapping requirements to design, code, and test artifacts."
+  },
+  {
+    "id": "DOC-UI-GUIDELINES",
+    "label": "ui-guidelines",
+    "type": "ui",
+    "path": "docs/ui/ui-guidelines.md",
+    "description": "Visual system, typography, colors, layout components, and dark-mode styling rules."
+  },
+  {
+    "id": "MOD-AUTH-API",
+    "label": "api",
+    "type": "api",
+    "module": "MOD-AUTH",
+    "path": "modules/auth/api.md",
+    "description": "Endpoints for login validation, token issuance, and logout endpoints."
+  },
+  {
+    "id": "MOD-AUTH-FLOW",
+    "label": "flow",
+    "type": "user_flow",
+    "module": "MOD-AUTH",
+    "path": "modules/auth/flow.md",
+    "description": "Sequence diagrams mapping credentials submission to dashboard access."
+  },
+  {
+    "id": "MOD-AUTH",
+    "label": "overview",
+    "type": "module",
+    "path": "modules/auth/overview.md",
+    "description": "Module handling system authentication, access rules, session validation, and owner authorization."
+  },
+  {
+    "id": "MOD-AUTH-REQ",
+    "label": "requirements",
+    "type": "requirement",
+    "module": "MOD-AUTH",
+    "path": "modules/auth/requirements.md",
+    "description": "Specific authentication constraints, e.g. single owner account, session timeouts."
+  },
+  {
+    "id": "MOD-PAYMENT-FLOW",
+    "label": "flow",
+    "type": "user_flow",
+    "module": "MOD-PAYMENT",
+    "path": "modules/payment/flow.md",
+    "description": "Visual flow outlining redirection to external gateway."
+  },
+  {
+    "id": "MOD-PAYMENT",
+    "label": "overview",
+    "type": "module",
+    "path": "modules/payment/overview.md",
+    "description": "Module structure for donation setups, Stripe integrations, or billing elements."
+  },
+  {
+    "id": "MOD-PAYMENT-REQ",
+    "label": "requirements",
+    "type": "requirement",
+    "module": "MOD-PAYMENT",
+    "path": "modules/payment/requirements.md",
+    "description": "Outlining requirements for billing, invoice logs, or donation features."
+  }
+]
