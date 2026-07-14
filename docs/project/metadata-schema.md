@@ -16,7 +16,7 @@ Every node in the knowledge graph must have an ID that satisfies three rules:
 
 ### Format
 
-```
+```text
 <PREFIX>-<MODULE>-<NUMBER>
 ```
 
@@ -24,23 +24,23 @@ _Example: `REQ-AUTH-001`, `MOD-AUTH`, `API-AUTH-LOGIN`, `DB-USERS`_
 
 ### Standard Prefixes
 
-| Category      | Prefix   | Example            | Description                        |
-| ------------- | -------- | ------------------ | ---------------------------------- |
-| Project       | **PROJ** | `PROJ-TEMPLATE` | Top-level project identifier       |
-| Module        | **MOD**  | `MOD-AUTH`         | System module or boundary          |
-| Requirement   | **REQ**  | `REQ-AUTH-001`     | System or business requirement     |
-| Business Rule | **BR**   | `BR-AUTH-001`      | Specific business rule             |
-| Use Case      | **UC**   | `UC-AUTH-001`      | User use case description          |
-| User Flow     | **FLOW** | `FLOW-AUTH-001`    | Sequential user flow mapping       |
-| API           | **API**  | `API-AUTH-LOGIN`   | Web endpoint/service               |
-| Database      | **DB**   | `DB-USERS`         | Main database schema instance      |
-| Table         | **TBL**  | `TBL-USERS`        | Specific database table            |
-| Architecture  | **ARCH** | `ARCH-001`         | Architectural design diagrams/docs |
-| UI Screen     | **UI**   | `UI-LOGIN`         | Layout screen wireframe/view       |
-| Component     | **CMP**  | `CMP-LOGIN-FORM`   | Code component UI                  |
-| Test Case     | **TEST** | `TEST-AUTH-001`    | Verification test case             |
-| Source File   | **SRC**  | `SRC-AUTH-LOGIN`   | Source code file boundary          |
-| Document      | **DOC**  | `DOC-PRD`          | Documentation files                |
+| Category      | Prefix   | Example          | Description                        |
+| ------------- | -------- | ---------------- | ---------------------------------- |
+| Project       | **PROJ** | `PROJ-TEMPLATE`  | Top-level project identifier       |
+| Module        | **MOD**  | `MOD-AUTH`       | System module or boundary          |
+| Requirement   | **REQ**  | `REQ-AUTH-001`   | System or business requirement     |
+| Business Rule | **BR**   | `BR-AUTH-001`    | Specific business rule             |
+| Use Case      | **UC**   | `UC-AUTH-001`    | User use case description          |
+| User Flow     | **FLOW** | `FLOW-AUTH-001`  | Sequential user flow mapping       |
+| API           | **API**  | `API-AUTH-LOGIN` | Web endpoint/service               |
+| Database      | **DB**   | `DB-USERS`       | Main database schema instance      |
+| Table         | **TBL**  | `TBL-USERS`      | Specific database table            |
+| Architecture  | **ARCH** | `ARCH-001`       | Architectural design diagrams/docs |
+| UI Screen     | **UI**   | `UI-LOGIN`       | Layout screen wireframe/view       |
+| Component     | **CMP**  | `CMP-LOGIN-FORM` | Code component UI                  |
+| Test Case     | **TEST** | `TEST-AUTH-001`  | Verification test case             |
+| Source File   | **SRC**  | `SRC-AUTH-LOGIN` | Source code file boundary          |
+| Document      | **DOC**  | `DOC-PRD`        | Documentation files                |
 
 ---
 

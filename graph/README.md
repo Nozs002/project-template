@@ -14,7 +14,7 @@ primary use cases:
 
 ## Folder Structure
 
-```
+```text
 graph/
 ├── nodes.json             # Structured array of project entities (schema-defined)
 ├── edges.json             # Structured array of relationships between entities (schema-defined)
@@ -70,7 +70,7 @@ relationships, and flows between nodes.
 ]
 ```
 
-#### Standardized Edge Catalogue:
+#### Standardized Edge Catalogue
 
 - `contains`: Folder $\rightarrow$ File (Physical folder containment tree).
 - `links`: Markdown $\rightarrow$ Markdown (Internal hyperlinks, Wiki-links
@@ -158,7 +158,7 @@ instead of scanning the entire workspace. By doing so, agents drastically
 minimize read tokens, avoid indexing stale files, and grasp systemic connections
 instantly.
 
-### Recommended Steps for AI Agents:
+### Recommended Steps for AI Agents
 
 1. **Understand Layout**: Read `graph/nodes.json` and `graph/edges.json` first
    to index the workspace's entities.

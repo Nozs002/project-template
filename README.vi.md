@@ -1,10 +1,21 @@
 # 🚀 Docs-First AI Boilerplate
 
-_(🇺🇸 [Read in English](README.md))_ Welcome to the **Docs-First AI
-Boilerplate**! Đây là khung dự án (Template Repository) được thiết kế đặc biệt
-theo triết lý **"Tài liệu trước, Code sau" (Docs-First)**, tối ưu hóa cho quy
-trình làm việc kết hợp với Trí tuệ nhân tạo (AI Agents) và Kiến trúc theo miền
-(Domain-Driven Design).
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+
+_(🇺🇸 [Read in English](README.md))_
+
+Welcome to the **Docs-First AI Boilerplate**! Đây là khung dự án (Template
+Repository) được thiết kế đặc biệt theo triết lý **"Tài liệu trước, Code sau"
+(Docs-First)**, tối ưu hóa cho quy trình làm việc kết hợp với Trí tuệ nhân tạo
+(AI Agents) và Kiến trúc theo miền (Domain-Driven Design).
+
+## 📸 Demo & Screenshots
+
+> _Bạn có thể đặt ảnh chụp màn hình hoặc một đoạn GIF demo ngắn tại đây để người
+> xem hình dung nhanh về dự án!_
+>
+> ![Demo Placeholder](https://via.placeholder.com/800x400.png?text=Your+App+Screenshot+Here)
 
 ## 🌟 Điểm Nổi Bật (Features)
 
@@ -45,10 +56,28 @@ Dưới đây là luồng hoạt động từng bước cho mọi dự án:
 ### Bước 1: Khởi tạo dự án
 
 1. **Clone Repo:** Khởi tạo dự án mới từ template này.
-2. **Cài đặt công cụ:** Chạy lệnh `npm install` để kích hoạt hệ thống kiểm duyệt
-   lỗi tự động.
+
+   ```bash
+   git clone https://github.com/your-username/your-project-name.git
+   cd your-project-name
+   ```
+
+2. **Cài đặt công cụ:** Kích hoạt hệ thống kiểm duyệt lỗi tự động (Husky,
+   Prettier, Markdownlint).
+
+   ```bash
+   # Đảm bảo bạn đã cài đặt Node.js (v18+)
+   npm install
+   ```
+
 3. **Tạo nhánh (Branch):** Từ nhánh `main` (chứa tài liệu), rẽ nhánh ra công
-   nghệ bạn muốn dùng (ví dụ: `git checkout -b base-react` hoặc `base-nestjs`).
+   nghệ bạn muốn dùng.
+
+   ```bash
+   git checkout -b base-react
+   # hoặc
+   git checkout -b base-nestjs
+   ```
 
 ### Bước 2: Đặc tả Yêu cầu Tổng quan (Cấp độ Project)
 

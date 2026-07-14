@@ -1,11 +1,21 @@
 # 🚀 Docs-First AI Boilerplate
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+
 _(🇻🇳 [Đọc bản tiếng Việt](README.vi.md))_
 
 Welcome to the **Docs-First AI Boilerplate**! This is a Template Repository
 specifically designed following the **"Documentation-First, Code Later"**
 philosophy, optimized for workflows combining AI Agents and Domain-Driven Design
 (DDD).
+
+## 📸 Demo & Screenshots
+
+> _Put your awesome screenshots or a quick GIF demo here showing what the
+> project looks like or how it works!_
+>
+> ![Demo Placeholder](https://via.placeholder.com/800x400.png?text=Your+App+Screenshot+Here)
 
 ## 🌟 Features
 
@@ -47,11 +57,28 @@ Below is the step-by-step workflow for every project:
 ### Step 1: Project Initialization
 
 1. **Clone Repo:** Initialize a new project from this template.
-2. **Install Tools:** Run `npm install` to activate the automatic error checking
-   system.
+
+   ```bash
+   git clone https://github.com/your-username/your-project-name.git
+   cd your-project-name
+   ```
+
+2. **Install Tools:** Activate the automatic error checking system (Husky,
+   Prettier, Markdownlint).
+
+   ```bash
+   # Make sure you have Node.js installed (v18+)
+   npm install
+   ```
+
 3. **Create Branch:** From the `main` branch (which contains documentation),
-   branch out to the technology stack you intend to use (e.g.,
-   `git checkout -b base-react` or `base-nestjs`).
+   branch out to the technology stack you intend to use.
+
+   ```bash
+   git checkout -b base-react
+   # or
+   git checkout -b base-nestjs
+   ```
 
 ### Step 2: High-Level Requirements Specification (Project Level)
 

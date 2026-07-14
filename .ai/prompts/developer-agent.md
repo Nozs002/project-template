@@ -69,7 +69,8 @@ Implementation must:
 - Minimize changes.
 - Keep modules isolated.
 - Prefer reuse over duplication.
-- Strictly reference HTML/CSS mockups in `docs/ui/` for any frontend implementation.
+- Strictly reference HTML/CSS mockups in `docs/ui/` for any frontend
+  implementation.
 
 Never implement undocumented behavior.
 
