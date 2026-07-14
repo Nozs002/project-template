@@ -18,8 +18,32 @@ Nhánh này chứa Boilerplate (khuôn mẫu) đã được thiết lập sẵn 
 - **CSS Strategy**: Sử dụng CSS Variables trong `globals.css` làm Design System
   cốt lõi. Các component sử dụng `*.module.css` để cô lập scope.
 
-## 🚀 Cách chạy dự án
+## 🚀 Hướng dẫn Cài đặt & Khởi chạy (Dành cho thành viên mới)
 
-1. `pnpm install`
-2. Cấu hình biến môi trường `.env` cho MongoDB.
-3. `pnpm dev`
+Khi bạn clone nhánh này về máy tính mới, hãy làm tuần tự các bước sau:
+
+**1. Khôi phục thư viện:**
+
+```bash
+pnpm install
+```
+
+**2. Thiết lập Biến môi trường:**
+
+- Copy file `.env.example` và đổi tên thành `.env`.
+- Cập nhật lại chuỗi kết nối `DATABASE_URL` bên trong file `.env` thành database
+  của bạn.
+
+**3. Đồng bộ Prisma (Sinh code gợi ý TypeScript):**
+
+```bash
+npx prisma generate
+```
+
+**4. Khởi chạy Server Development:**
+
+```bash
+pnpm dev
+```
+
+Truy cập `http://localhost:3000` để xem thành quả!
