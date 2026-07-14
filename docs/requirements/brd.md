@@ -1,6 +1,7 @@
 ---
-id: BRD-001
-type: brd
+id: DOC-BRD
+type: requirement
+title: brd
 status: draft
 project: PROJ-TEMPLATE
 version: 1.0.0

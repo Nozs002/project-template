@@ -1,3 +1,17 @@
+---
+id: DOC-METADATA-SCHEMA
+type: document
+title: metadata-schema
+status: approved
+version: 1.0
+owner: PO
+tags:
+  - metadata
+  - schema
+  - graph
+last_updated: 2026-07-14
+---
+
 # Project Knowledge Graph Metadata Schema v1.0
 
 This document is the **Single Source of Truth (SSOT)** for project architecture

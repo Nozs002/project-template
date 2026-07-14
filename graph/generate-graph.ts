@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
 
 // Define structures matching Schema v1.0
 interface GraphNode {
@@ -20,9 +21,19 @@ interface GraphEdge {
 }
 
 // Configuration
-const ROOT_DIR = path.resolve(__dirname, '..');
-const OUTPUT_NODES = path.resolve(__dirname, 'nodes.json');
-const OUTPUT_EDGES = path.resolve(__dirname, 'edges.json');
+let currentDirname: string;
+try {
+  currentDirname =
+    typeof __dirname !== 'undefined'
+      ? __dirname
+      : path.dirname(fileURLToPath(import.meta.url));
+} catch (e) {
+  currentDirname = process.cwd();
+}
+
+const ROOT_DIR = path.resolve(currentDirname, '..');
+const OUTPUT_NODES = path.resolve(currentDirname, 'nodes.json');
+const OUTPUT_EDGES = path.resolve(currentDirname, 'edges.json');
 
 const IGNORE_DIRS = new Set([
   '.git',

@@ -699,9 +699,9 @@ function applyFilters() {
     // Process nodes
     cy.nodes().forEach((node) => {
       const type = node.data('type');
-      const label = (node.data('label') || '').toLowerCase();
-      const id = node.id().toLowerCase();
-      const description = (node.data('description') || '').toLowerCase();
+      const label = String(node.data('label') || '').toLowerCase();
+      const id = String(node.id() || '').toLowerCase();
+      const description = String(node.data('description') || '').toLowerCase();
 
       const typeMatch = activeFilters.has(type);
       const searchMatch =

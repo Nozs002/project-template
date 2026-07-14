@@ -1,6 +1,7 @@
 ---
-id: PRD-001
-type: prd
+id: DOC-PRD
+type: requirement
+title: prd
 status: draft
 project: PROJ-TEMPLATE
 version: 1.0.0
