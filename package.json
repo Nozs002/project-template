@@ -10,13 +10,18 @@
   "scripts": {
     "generate-graph": "tsc && node graph/generate-graph.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write .",
-    "lint:md": "markdownlint \"**/*.md\" --ignore node_modules",
+    "format": "prettier --write \"{docs,modules}/**/*\"",
+    "lint:md": "markdownlint \"{docs,modules}/**/*.md\"",
     "prepare": "husky"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "**/*.md": "markdownlint"
+    "{docs,modules}/**/*.md": [
+      "prettier --write",
+      "markdownlint"
+    ],
+    "{docs,modules}/**/*.{js,ts,json}": [
+      "prettier --write"
+    ]
   },
   "keywords": [],
   "author": "",

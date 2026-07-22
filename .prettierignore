@@ -1,0 +1,12 @@
+# Ignore configuration for Prettier - target only docs and modules
+.agents/
+.github/
+.husky/
+node_modules/
+graph/
+README*.md
+README.md
+README.vi.md
+CONTRIBUTING.md
+LICENSE
+branching-strategy.md

@@ -1,0 +1,9 @@
+# Ignore configuration for markdownlint - target only docs and modules
+.agents/
+.github/
+node_modules/
+README*.md
+README.md
+README.vi.md
+CONTRIBUTING.md
+branching-strategy.md
