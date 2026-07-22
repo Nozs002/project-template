@@ -198,3 +198,10 @@ phương pháp **Copy thủ công**:
   _Custom Instructions_) của AI, hoặc dán thẳng vào khung chat đầu tiên.
 - Bằng cách này, bạn có thể chủ động mớm cho AI đúng bộ kỹ năng cần thiết cho
   task đó, giúp tiết kiệm bộ nhớ (Token) và giúp AI tập trung hơn.
+
+### 3. Cấu hình Ngôn ngữ Phản hồi của AI
+
+Mặc định, AI Agent được cấu hình để luôn giao tiếp và trả lời người dùng bằng **Tiếng Việt**.
+
+- **Thay đổi tạm thời trong phiên chat:** Bạn có thể yêu cầu trực tiếp AI trong khung chat (Ví dụ: *"Hãy trả lời bằng Tiếng Anh / Please reply in English"*).
+- **Cấu hình cố định toàn hệ thống:** Mở file `.agents/AGENTS.md` và chỉnh sửa quy tắc `Default Response Language` tại mục `## Communication & Language Policy` sang ngôn ngữ mong muốn của bạn (như English, Japanese, v.v.).

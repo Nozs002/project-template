@@ -191,7 +191,12 @@ Copy** method:
 
 - Before starting a new chat or project, open `.agents/AGENTS.md` or relevant
   `SKILL.md` files.
-- **Copy** the content and **Paste** it into the AI's _System Prompt_ (or
-  _Custom Instructions_), or directly into the first chat message.
-- This allows you to feed the AI the exact skills needed for the task, saving
-  context memory (Tokens) and keeping the AI focused.
+- Copy the content and Paste it into the AI's System Prompt (or Custom Instructions), or directly into the first chat message.
+- This allows you to feed the AI the exact skills needed for the task, saving context memory (Tokens) and keeping the AI focused.
+
+### 3. Response Language Configuration
+
+By default, the AI Agent is configured to communicate and respond in **Vietnamese (Tiếng Việt)**.
+
+- **Temporary Switch:** Ask the AI directly in chat (e.g., *"Please reply in English"* or *"Hãy trả lời bằng tiếng Việt"*).
+- **Global Permanent Configuration:** Open `.agents/AGENTS.md` and edit the `Default Response Language` rule under `## Communication & Language Policy` to set your preferred language.

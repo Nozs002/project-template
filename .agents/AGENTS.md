@@ -16,3 +16,8 @@ to the project's official AI rules defined in the `.ai/` directory:
 
 Always prioritize the workflows and guidelines defined in the `.ai/` directory
 over default behaviors.
+
+## Communication & Language Policy
+
+- **Default Response Language:** You **MUST ALWAYS** communicate and respond to the user in **Vietnamese (Tiếng Việt)** by default.
+- **Language Switch:** If the user explicitly requests responses in another language (e.g. English, Japanese), switch to the user's requested language for that conversation.
