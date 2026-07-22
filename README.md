@@ -56,23 +56,61 @@ Below is the step-by-step workflow for every project:
 
 ### Step 1: Project Initialization
 
-1. **Clone Repo:** Initialize a new project from this template.
+1. **Clone Repo:** Download the template repository:
 
    ```bash
-   git clone https://github.com/your-username/your-project-name.git
-   cd your-project-name
+   git clone https://github.com/Nozs002/project-template.git my-new-project
+   cd my-new-project
    ```
 
-2. **Install Tools:** Activate the automatic error checking system (Husky,
-   Prettier, Markdownlint).
+2. **Disconnect Old Git & Link to New GitHub Repository:**
+   Choose one of the two options below depending on your branch history preferences:
+
+   - **Option A (Recommended for standalone projects - Clean History):** Clear old template commit history to start with a clean repository.
+     ```bash
+     # Remove old .git folder (Linux/macOS: rm -rf .git | Windows CMD: rmdir /s /q .git | PowerShell: Remove-Item -Recurse -Force .git)
+     rm -rf .git
+
+     # Re-initialize Git and create first commit
+     git init
+     git add .
+     git commit -m "Initial commit from template"
+
+     # Link to your new GitHub Repository
+     git remote add origin https://github.com/user-name/new-repo.git
+     git branch -M main
+     git push -u origin main
+     ```
+
+   - **Option B (Preserve full template commit & branch history):** Keep the entire Git commit history & branch graph from the template.
+     ```bash
+     # Remove old template remote origin
+     git remote remove origin
+
+     # Add new remote origin pointing to your repository
+     git remote add origin https://github.com/user-name/new-repo.git
+     git branch -M main
+
+     # Push all branches and branch graph history to your new GitHub
+     git push -u origin --all
+     git push -u origin --tags
+     ```
+
+   > 💡 **Troubleshooting Missing Git Branch Graph History or Push Errors:**
+   > - **Cause 1 (Deleting `.git`):** Option A (`rm -rf .git`) completely resets history, so the Git Branch Graph will start fresh from `"Initial commit from template"`. To view full previous branch history on GitHub / VS Code Git Graph extension, use **Option B**.
+   > - **Cause 2 (`refusing to merge unrelated histories` error):** If your new GitHub repository was initialized with a README/LICENSE file, merge histories before pushing:
+   >   ```bash
+   >   git pull origin main --allow-unrelated-histories
+   >   ```
+
+3. **Install Tools:** Activate automatic error checking system (Husky, Prettier, Markdownlint).
 
    ```bash
    # Make sure you have Node.js installed (v18+)
    npm install
    ```
 
-3. **Create Branch:** From the `main` branch (which contains documentation),
-   branch out to the technology stack you intend to use.
+4. **Create Branch:** From the `main` branch (which contains documentation), branch out to the technology stack you intend to use.
 
    ```bash
    git checkout -b base-react

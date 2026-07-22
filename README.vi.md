@@ -55,23 +55,61 @@ Dưới đây là luồng hoạt động từng bước cho mọi dự án:
 
 ### Bước 1: Khởi tạo dự án
 
-1. **Clone Repo:** Khởi tạo dự án mới từ template này.
+1. **Clone Repo:** Tải dự án mẫu về máy:
 
    ```bash
-   git clone https://github.com/your-username/your-project-name.git
-   cd your-project-name
+   git clone https://github.com/Nozs002/project-template.git my-new-project
+   cd my-new-project
    ```
 
-2. **Cài đặt công cụ:** Kích hoạt hệ thống kiểm duyệt lỗi tự động (Husky,
-   Prettier, Markdownlint).
+2. **Ngắt kết nối Git cũ & Liên kết với Repo GitHub mới:**
+   Chọn 1 trong 2 phương án bên dưới tùy thuộc vào nhu cầu xem lịch sử nhánh của bạn:
+
+   - **Option A (Khuyến nghị cho dự án độc lập hoàn toàn - Clean History):** Xóa bỏ lịch sử commit cũ của Template để tạo kho lưu trữ mới tinh.
+     ```bash
+     # Xóa thư mục .git cũ (Linux/macOS: rm -rf .git | Windows CMD: rmdir /s /q .git | PowerShell: Remove-Item -Recurse -Force .git)
+     rm -rf .git
+
+     # Khởi tạo lại Git và commit đầu tiên
+     git init
+     git add .
+     git commit -m "Initial commit from template"
+
+     # Liên kết đến GitHub Repo mới của bạn
+     git remote add origin https://github.com/user-name/new-repo.git
+     git branch -M main
+     git push -u origin main
+     ```
+
+   - **Option B (Giữ lại toàn bộ lịch sử commit & nhánh của Template):** Giữ nguyên cây lịch sử Git (Git Branch Graph) từ Template để theo dõi các nhánh cũ.
+     ```bash
+     # Xóa remote origin cũ của template
+     git remote remove origin
+
+     # Thêm remote origin trỏ về Repo mới của bạn
+     git remote add origin https://github.com/user-name/new-repo.git
+     git branch -M main
+
+     # Push tất cả các nhánh và lịch sử cây nhánh sang GitHub mới
+     git push -u origin --all
+     git push -u origin --tags
+     ```
+
+   > 💡 **Mẹo sửa lỗi không thấy lịch sử Đồ thị nhánh (Git Branch Graph) hoặc Lỗi Push:**
+   > - **Nguyên nhân 1 (Xóa `.git`):** Khi chọn Option A (`rm -rf .git`), cây lịch sử cũ đã được làm sạch hoàn toàn nên Đồ thị nhánh sẽ bắt đầu mới từ commit `"Initial commit from template"`. Nếu muốn thấy toàn bộ nhánh & lịch sử cũ trên GitHub/VS Code Git Graph, hãy chọn **Option B**.
+   > - **Nguyên nhân 2 (Lỗi `refusing to merge unrelated histories`):** Nếu Repo mới tạo trên GitHub đã lỡ tích hợp sẵn file README/LICENSE, chạy lệnh sau để gộp lịch sử trước khi push:
+   >   ```bash
+   >   git pull origin main --allow-unrelated-histories
+   >   ```
+
+3. **Cài đặt công cụ:** Kích hoạt hệ thống kiểm duyệt lỗi tự động (Husky, Prettier, Markdownlint).
 
    ```bash
    # Đảm bảo bạn đã cài đặt Node.js (v18+)
    npm install
    ```
 
-3. **Tạo nhánh (Branch):** Từ nhánh `main` (chứa tài liệu), rẽ nhánh ra công
-   nghệ bạn muốn dùng.
+4. **Tạo nhánh (Branch):** Từ nhánh `main` (chứa tài liệu), rẽ nhánh ra công nghệ bạn muốn dùng.
 
    ```bash
    git checkout -b base-react
