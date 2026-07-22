@@ -62,17 +62,40 @@ const path = __importStar(require('path'));
 const ROOT_DIR = path.resolve(__dirname, '..');
 const OUTPUT_NODES = path.resolve(__dirname, 'nodes.json');
 const OUTPUT_EDGES = path.resolve(__dirname, 'edges.json');
+const OUTPUT_DATA_JS = path.resolve(__dirname, 'graph-data.js');
 const IGNORE_DIRS = new Set([
   '.git',
   '.ai',
+  '.agents',
+  '.github',
+  '.husky',
+  '.vscode',
   'node_modules',
   'graph',
   'dist',
   '.next',
   'out',
   'build',
+  'scratch',
 ]);
-const IGNORE_FILES = new Set(['package-lock.json', '.gitignore', 'README.md']);
+const IGNORE_FILES = new Set([
+  'package-lock.json',
+  'package.json',
+  'tsconfig.json',
+  '.gitignore',
+  '.gitattributes',
+  '.editorconfig',
+  '.prettierrc',
+  '.markdownlint.json',
+  '.env',
+  'readme.md',
+  'contributing.md',
+  'license',
+  'branching-strategy.md',
+  'pull_request_template.md',
+  'bug_report.md',
+  'feature_request.md',
+]);
 const VALID_TYPES = new Set([
   'project',
   'document',
@@ -145,10 +168,19 @@ function scanDirectory(dirPath) {
     const stats = fs.statSync(fullPath);
     const relPath = toRelativePath(fullPath);
     if (stats.isDirectory()) {
-      if (IGNORE_DIRS.has(item)) continue;
+      if (IGNORE_DIRS.has(item) || item.startsWith('.')) continue;
       scanDirectory(fullPath);
     } else {
-      if (IGNORE_FILES.has(item)) continue;
+      const lowerItem = item.toLowerCase();
+      if (
+        IGNORE_FILES.has(item) ||
+        IGNORE_FILES.has(lowerItem) ||
+        lowerItem.includes('readme') ||
+        lowerItem.includes('contributing') ||
+        lowerItem.startsWith('.')
+      ) {
+        continue;
+      }
       const ext = path.extname(item).toLowerCase();
       if (ext === '.md') {
         markdownFilePaths.push(relPath);
@@ -177,8 +209,15 @@ function processMarkdownFiles() {
     const fullPath = path.join(ROOT_DIR, relPath);
     const content = fs.readFileSync(fullPath, 'utf-8');
     const match = content.match(yamlRegex);
+    const parts = relPath.split('/');
+    const fileBasename = path.basename(relPath, '.md');
+    let defaultLabel = fileBasename;
+    if (parts.length >= 3 && parts[0] === 'modules') {
+      const moduleName = parts[1];
+      defaultLabel = `${fileBasename}/${moduleName}`;
+    }
     let id = '';
-    let label = path.basename(relPath, '.md');
+    let label = defaultLabel;
     let type = 'document';
     let yamlData = null;
     if (match) {
@@ -199,6 +238,12 @@ function processMarkdownFiles() {
     }
     // Validate node type
     const validatedType = VALID_TYPES.has(type) ? type : 'document';
+    let descriptionStr = '';
+    if (typeof yamlData?.description === 'string') {
+      descriptionStr = yamlData.description;
+    } else if (Array.isArray(yamlData?.description)) {
+      descriptionStr = yamlData.description.join(' ');
+    }
     // Register Node
     nodes.set(id, {
       id: id,
@@ -206,7 +251,7 @@ function processMarkdownFiles() {
       type: validatedType,
       module: yamlData?.module,
       path: relPath,
-      description: yamlData?.description || '',
+      description: descriptionStr,
       metadata: yamlData || {},
     });
     // Record path-to-ID mapping
@@ -449,11 +494,26 @@ function main() {
     const { metadata, ...cleanNode } = node;
     return cleanNode;
   });
+  // Filter valid edges (ensure both source and target exist)
+  const validEdges = edges.filter((edge) => {
+    const hasSource = nodes.has(edge.source);
+    const hasTarget = nodes.has(edge.target);
+    if (!hasSource || !hasTarget) {
+      console.warn(
+        `Warning: Invalid edge skipped (${edge.source} -> ${edge.target}): missing ${!hasSource ? 'source' : 'target'}`,
+      );
+      return false;
+    }
+    return true;
+  });
   // Write files
   console.log(`Writing ${finalNodes.length} nodes to: ${OUTPUT_NODES}`);
   fs.writeFileSync(OUTPUT_NODES, JSON.stringify(finalNodes, null, 2), 'utf-8');
-  console.log(`Writing ${edges.length} edges to: ${OUTPUT_EDGES}`);
-  fs.writeFileSync(OUTPUT_EDGES, JSON.stringify(edges, null, 2), 'utf-8');
+  console.log(`Writing ${validEdges.length} edges to: ${OUTPUT_EDGES}`);
+  fs.writeFileSync(OUTPUT_EDGES, JSON.stringify(validEdges, null, 2), 'utf-8');
+  const jsContent = `window.GRAPH_NODES = ${JSON.stringify(finalNodes, null, 2)};\nwindow.GRAPH_EDGES = ${JSON.stringify(validEdges, null, 2)};\n`;
+  console.log(`Writing fallback JS data to: ${OUTPUT_DATA_JS}`);
+  fs.writeFileSync(OUTPUT_DATA_JS, jsContent, 'utf-8');
   console.log(
     'Knowledge Graph generation completed successfully under Schema v1.0!',
   );

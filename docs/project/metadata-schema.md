@@ -141,3 +141,7 @@ comments rather than scanning raw strings:
    not scan raw strings.
 5. **No AI Inference**: Relationships must be explicitly defined in comments or
    YAML metadata; agents must not infer them.
+6. **Title Naming for Module Files**: Files inside separate modules
+   (`modules/[module_name]/[file_name].md`) must format `title` as
+   `[file_name]/[module_name]` (e.g., `api/sample-module`,
+   `overview/sample-module`).

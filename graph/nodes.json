@@ -1,1 +1,156 @@
-[]
+[
+  {
+    "id": "DOC-RULES",
+    "label": "business-rules",
+    "type": "business_rule",
+    "path": "docs/analysis/business-rules.md",
+    "description": ""
+  },
+  {
+    "id": "docs/analysis/srs.md",
+    "label": "srs",
+    "type": "document",
+    "path": "docs/analysis/srs.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-USE-CASES",
+    "label": "use-cases",
+    "type": "use_case",
+    "path": "docs/analysis/use-cases.md",
+    "description": "Interactive use cases for portfolio owners and recruiters."
+  },
+  {
+    "id": "DOC-USER-FLOWS",
+    "label": "user-flows",
+    "type": "user_flow",
+    "path": "docs/analysis/user-flows.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-ARCH-API",
+    "label": "api",
+    "type": "api",
+    "path": "docs/architecture/api.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-ARCH",
+    "label": "architecture",
+    "type": "architecture",
+    "path": "docs/architecture/architecture.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-ARCH-DB",
+    "label": "database",
+    "type": "database",
+    "path": "docs/architecture/database.md",
+    "description": ""
+  },
+  {
+    "id": "docs/changelog/changes.md",
+    "label": "changes",
+    "type": "document",
+    "path": "docs/changelog/changes.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-GLOSSARY",
+    "label": "glossary",
+    "type": "document",
+    "path": "docs/project/glossary.md",
+    "description": ""
+  },
+  {
+    "id": "docs/project/metadata-schema.md",
+    "label": "metadata-schema",
+    "type": "document",
+    "path": "docs/project/metadata-schema.md",
+    "description": ""
+  },
+  {
+    "id": "docs/project/project-structure.md",
+    "label": "project-structure",
+    "type": "document",
+    "path": "docs/project/project-structure.md",
+    "description": ""
+  },
+  {
+    "id": "docs/project/status.md",
+    "label": "status",
+    "type": "document",
+    "path": "docs/project/status.md",
+    "description": ""
+  },
+  {
+    "id": "docs/project/tech-stack.md",
+    "label": "tech-stack",
+    "type": "document",
+    "path": "docs/project/tech-stack.md",
+    "description": ""
+  },
+  {
+    "id": "docs/project/vision.md",
+    "label": "vision",
+    "type": "document",
+    "path": "docs/project/vision.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-BRD",
+    "label": "brd",
+    "type": "document",
+    "path": "docs/requirements/brd.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-PRD",
+    "label": "prd",
+    "type": "document",
+    "path": "docs/requirements/prd.md",
+    "description": ""
+  },
+  {
+    "id": "DOC-RTM",
+    "label": "rtm",
+    "type": "requirement",
+    "path": "docs/requirements/rtm.md",
+    "description": "Matrix mapping requirements to design, code, and test artifacts."
+  },
+  {
+    "id": "DOC-UI-GUIDELINES",
+    "label": "ui-guidelines",
+    "type": "ui",
+    "path": "docs/ui/ui-guidelines.md",
+    "description": ""
+  },
+  {
+    "id": "modules/sample-module/api.md",
+    "label": "api/sample-module",
+    "type": "document",
+    "path": "modules/sample-module/api.md",
+    "description": ""
+  },
+  {
+    "id": "modules/sample-module/flow.md",
+    "label": "flow/sample-module",
+    "type": "document",
+    "path": "modules/sample-module/flow.md",
+    "description": ""
+  },
+  {
+    "id": "modules/sample-module/overview.md",
+    "label": "overview/sample-module",
+    "type": "document",
+    "path": "modules/sample-module/overview.md",
+    "description": ""
+  },
+  {
+    "id": "modules/sample-module/requirements.md",
+    "label": "requirements/sample-module",
+    "type": "document",
+    "path": "modules/sample-module/requirements.md",
+    "description": ""
+  }
+]

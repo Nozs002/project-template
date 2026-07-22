@@ -1,5 +1,5 @@
 ---
-id: PRD-001
+id: DOC-PRD
 type: prd
 status: draft
 project: PROJ-TEMPLATE

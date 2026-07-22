@@ -18,9 +18,13 @@ dùng:
 3. **Thực Hiện Chuẩn Hóa:** Đọc file mục tiêu người dùng yêu cầu, sau đó áp dụng
    chính xác các quy tắc vừa học được để định dạng lại và bổ sung metadata cho
    file đó. **LƯU Ý QUAN TRỌNG:**
-   - Trường `title` trong metadata bắt buộc phải được đặt giống với tên của file
-     đó (chỉ lấy phần tên, bỏ đuôi mở rộng, ví dụ file là `brd.md` thì
-     `title: brd`).
+   - Trường `title` trong metadata được quy định như sau:
+     - Đối với file nằm trong các module riêng biệt (thư mục
+       `modules/[tên module]/`), `title` bắt buộc đặt theo cấu trúc
+       `[tên file]/[tên module]` (ví dụ file `modules/sample-module/api.md` thì
+       `title: api/sample-module`).
+     - Đối với các file tài liệu chung ngoài module, `title` đặt giống với tên
+       file bỏ đuôi mở rộng (ví dụ file `brd.md` thì `title: brd`).
    - Chỉ được phép chỉnh sửa/thêm phần Metadata (như YAML frontmatter). TUYỆT
      ĐỐI KHÔNG được phép thay đổi, chỉnh sửa hay xóa bất kỳ nội dung nào thuộc
      về phần thân (body content) của file mục tiêu.

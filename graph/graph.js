@@ -229,11 +229,19 @@ function setupEventListeners() {
 // Load Nodes and Edges
 async function fetchGraphData() {
   try {
-    const nodesResponse = await fetch('nodes.json');
-    allNodes = await nodesResponse.json();
+    if (
+      Array.isArray(window.GRAPH_NODES) &&
+      Array.isArray(window.GRAPH_EDGES)
+    ) {
+      allNodes = window.GRAPH_NODES;
+      allEdges = window.GRAPH_EDGES;
+    } else {
+      const nodesResponse = await fetch('nodes.json');
+      allNodes = await nodesResponse.json();
 
-    const edgesResponse = await fetch('edges.json');
-    allEdges = await edgesResponse.json();
+      const edgesResponse = await fetch('edges.json');
+      allEdges = await edgesResponse.json();
+    }
 
     buildGraph();
     updateStats();
@@ -326,7 +334,14 @@ function getCytoscapeElements() {
   });
 
   // Map edges
+  const validNodeIds = new Set(allNodes.map((n) => n.id));
   allEdges.forEach((edge, idx) => {
+    if (!validNodeIds.has(edge.source) || !validNodeIds.has(edge.target)) {
+      console.warn(
+        `Skipping edge with missing node: source=${edge.source}, target=${edge.target}`,
+      );
+      return;
+    }
     const relationType = edge.relation || edge.type || 'references';
     elements.push({
       group: 'edges',
@@ -699,9 +714,12 @@ function applyFilters() {
     // Process nodes
     cy.nodes().forEach((node) => {
       const type = node.data('type');
-      const label = (node.data('label') || '').toLowerCase();
-      const id = node.id().toLowerCase();
-      const description = (node.data('description') || '').toLowerCase();
+      const label = String(node.data('label') || '').toLowerCase();
+      const id = String(node.id() || '').toLowerCase();
+      const descRaw = node.data('description');
+      const description = (
+        Array.isArray(descRaw) ? descRaw.join(' ') : String(descRaw || '')
+      ).toLowerCase();
 
       const typeMatch = activeFilters.has(type);
       const searchMatch =

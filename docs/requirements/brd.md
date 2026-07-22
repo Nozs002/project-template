@@ -1,5 +1,5 @@
 ---
-id: BRD-001
+id: DOC-BRD
 type: brd
 status: draft
 project: PROJ-TEMPLATE
