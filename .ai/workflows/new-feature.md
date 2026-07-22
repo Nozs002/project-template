@@ -193,6 +193,7 @@ Tasks should be small enough for implementation.
 
 Implementation Rules
 
+- **Automatic Git Branch Creation:** AI MUST automatically create a new dedicated Git branch (`git checkout -b feature/<feature-name>`) before creating or modifying any feature documentation or source code.
 - Follow architecture.
 - Follow coding standards.
 - Preserve module boundaries.
